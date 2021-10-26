@@ -35,7 +35,7 @@ public class StringCalculator {
 
 	private List<Integer> tokenize(String numbers) {
 		String[] strNums;
-		strNums = numbers.split(",");
+		strNums = numbers.split(",|\n");
 		
 		List<Integer> nums = Stream.of(strNums).map(Integer::valueOf).collect(Collectors.toList());
 		return nums;
