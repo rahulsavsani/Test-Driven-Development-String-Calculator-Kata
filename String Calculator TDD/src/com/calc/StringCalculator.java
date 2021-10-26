@@ -6,9 +6,6 @@ public class StringCalculator {
 		if(hasMultipleNums(numbers))
 			return handleMultipleNums(numbers);
 			
-		if(hasTwoNums(numbers))
-			return handleTwoNums(numbers);
-		
 		if(isEmptyString(numbers))
 			return handleEmptyString();
 		
@@ -16,19 +13,18 @@ public class StringCalculator {
 	}
 
 	private boolean hasMultipleNums(String numbers) {
-		return numbers.length() > 3;
+		return numbers.length() > 1;
 	}
 
 	private int handleMultipleNums(String numbers) {
+		if(numbers.length() == 3)
+			return Integer.parseInt(String.valueOf(numbers.charAt(0))) + Integer.parseInt(String.valueOf(numbers.charAt(2)));
+		
 		return Integer.parseInt(String.valueOf(numbers.charAt(0))) + Integer.parseInt(String.valueOf(numbers.charAt(2))) + Integer.parseInt(String.valueOf(numbers.charAt(4)));
 	}
 
 	private boolean isEmptyString(String numbers) {
 		return numbers.isEmpty();
-	}
-
-	private boolean hasTwoNums(String numbers) {
-		return numbers.length() == 3;
 	}
 
 	private int handleSingleNum(String numbers) {
@@ -37,10 +33,5 @@ public class StringCalculator {
 
 	private int handleEmptyString() {
 		return 0;
-	}
-
-	private int handleTwoNums(String numbers) {
-		
-		return Integer.parseInt(String.valueOf(numbers.charAt(0))) + Integer.parseInt(String.valueOf(numbers.charAt(2)));
 	}
 }
