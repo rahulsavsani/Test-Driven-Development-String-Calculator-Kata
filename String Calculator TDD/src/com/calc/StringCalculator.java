@@ -3,8 +3,8 @@ package com.calc;
 public class StringCalculator {
 	
 	int add(String numbers) {
-		if(numbers.length() > 3)
-			return 6;
+		if(hasMultipleNums(numbers))
+			return handleMultipleNums();
 			
 		if(hasTwoNums(numbers))
 			return handleTwoNums(numbers);
@@ -13,6 +13,14 @@ public class StringCalculator {
 			return handleEmptyString();
 		
 		return handleSingleNum(numbers);
+	}
+
+	private boolean hasMultipleNums(String numbers) {
+		return numbers.length() > 3;
+	}
+
+	private int handleMultipleNums() {
+		return 6;
 	}
 
 	private boolean isEmptyString(String numbers) {
