@@ -37,16 +37,38 @@ public class StringCalculator {
 	private List<Integer> tokenize(String numbers) {
 		String[] strNums;
 		
-		if(numbers.startsWith("//")) {
-			
-			String[] str = numbers.split("\n");
-			strNums = str[1].split(String.valueOf(str[0].charAt(2)));			
-		}
-		else {
-			strNums = numbers.split(",|\n");			
-		}
+		if(containsCustomDelimeter(numbers)) 
+			strNums = splitByCustomDelimeter(numbers);			
 		
+		else 
+			strNums = splitByCommaNewLine(numbers);			
+		
+		return mapTokensToInteger(strNums);
+	}
+
+
+	private List<Integer> mapTokensToInteger(String[] strNums) {
 		return Stream.of(strNums).map(Integer::valueOf).collect(Collectors.toList());
+	}
+
+
+	private String[] splitByCommaNewLine(String numbers) {
+		String[] strNums;
+		strNums = numbers.split(",|\n");
+		return strNums;
+	}
+
+
+	private String[] splitByCustomDelimeter(String numbers) {
+
+		String[] str = numbers.split("\n");
+
+		return str[1].split(String.valueOf(str[0].charAt(2)));
+	}
+
+
+	private boolean containsCustomDelimeter(String numbers) {
+		return numbers.startsWith("//");
 	}
 
 	private boolean isEmptyString(String numbers) {
