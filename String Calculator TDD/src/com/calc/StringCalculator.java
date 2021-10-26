@@ -4,13 +4,21 @@ public class StringCalculator {
 	
 	int add(String numbers) {
 		
-		if(numbers.length() == 3)
+		if(hasTwoNums(numbers))
 			return handleTwoNums(numbers);
 		
-		if(numbers.isEmpty())
+		if(isEmptyString(numbers))
 			return handleEmptyString();
 		
 		return handleSingleNum(numbers);
+	}
+
+	private boolean isEmptyString(String numbers) {
+		return numbers.isEmpty();
+	}
+
+	private boolean hasTwoNums(String numbers) {
+		return numbers.length() == 3;
 	}
 
 	private int handleSingleNum(String numbers) {
