@@ -26,8 +26,13 @@ public class TestStringCalculator {
 	@Parameters
 	public static Iterable<Object[]> inputs() {
 		return Arrays.asList(new Object[][] {
-			{"1",1},
-			{"2",2}
+			{"",0},						//addEmptyStringReturnsZero
+			
+			{"1",1},					//addSingleNumReturnsNum
+			{"2",2},					//addSingleNumReturnsNum
+			
+			{"1,2",3}					//addTwoNumsReturnsSum		
+			
 		});
 	}
 
@@ -36,22 +41,11 @@ public class TestStringCalculator {
 		
 		sc = new StringCalculator();
 	}
-
-	@Test
-	public void addEmptyStringReturnsZero() {
-		
-		assertEquals(0, sc.add(""));
-	}
 	
 	@Test
-	public void addSingleNumReturnsNum() {
+	public void testStringCalculator() {
 		
 		assertEquals(expectedResult, sc.add(numbers));
 	}
-	
-	@Test
-	public void addTwoNumsReturnsSum() {
-		
-		assertEquals(3, sc.add("1,2"));
-	}
+
 }
