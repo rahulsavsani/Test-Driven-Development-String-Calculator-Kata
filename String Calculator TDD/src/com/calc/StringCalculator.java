@@ -6,10 +6,12 @@ import java.util.stream.Stream;
 
 public class StringCalculator {
 	
+	private static final int EMPTY_STRING_SUM_VALUE = 0;
+	
 	int add(String numbers) {
 
 		if(isEmptyString(numbers))
-			return handleEmptyString();
+			return EMPTY_STRING_SUM_VALUE;
 		
 		return handleMultipleNums(numbers);
 	}
@@ -19,9 +21,8 @@ public class StringCalculator {
 
 		List<Integer> nums = tokenize(numbers); 
 		
-		int sum = getTokenSum(nums);
+		return getTokenSum(nums);
 		
-		return sum;
 	}
 
 
@@ -37,15 +38,11 @@ public class StringCalculator {
 		String[] strNums;
 		strNums = numbers.split(",|\n");
 		
-		List<Integer> nums = Stream.of(strNums).map(Integer::valueOf).collect(Collectors.toList());
-		return nums;
+		return Stream.of(strNums).map(Integer::valueOf).collect(Collectors.toList());
 	}
 
 	private boolean isEmptyString(String numbers) {
 		return numbers.isEmpty();
 	}
 
-	private int handleEmptyString() {
-		return 0;
-	}
 }
