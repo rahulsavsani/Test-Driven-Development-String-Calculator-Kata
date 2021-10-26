@@ -7,39 +7,42 @@ import java.util.stream.Stream;
 public class StringCalculator {
 	
 	int add(String numbers) {
-		if(hasMultipleNums(numbers))
-			return handleMultipleNums(numbers);
-			
+
 		if(isEmptyString(numbers))
 			return handleEmptyString();
 		
-		return handleSingleNum(numbers);
+		return handleMultipleNums(numbers);
 	}
-
-	private boolean hasMultipleNums(String numbers) {
-		return numbers.length() > 1;
-	}
+	
 
 	private int handleMultipleNums(String numbers) {
 
-		String[] strNums;
-		strNums = numbers.split(",");
+		List<Integer> nums = tokenize(numbers); 
 		
-		List<Integer> nums = Stream.of(strNums).map(Integer::valueOf).collect(Collectors.toList()); 
-		
-		int sum = 0;
-		for(int i : nums)
-			sum += i;
+		int sum = getTokenSum(nums);
 		
 		return sum;
 	}
 
-	private boolean isEmptyString(String numbers) {
-		return numbers.isEmpty();
+
+	private int getTokenSum(List<Integer> nums) {
+		int sum = 0;
+		for(int i : nums)
+			sum += i;
+		return sum;
 	}
 
-	private int handleSingleNum(String numbers) {
-		return Integer.parseInt(numbers);
+
+	private List<Integer> tokenize(String numbers) {
+		String[] strNums;
+		strNums = numbers.split(",");
+		
+		List<Integer> nums = Stream.of(strNums).map(Integer::valueOf).collect(Collectors.toList());
+		return nums;
+	}
+
+	private boolean isEmptyString(String numbers) {
+		return numbers.isEmpty();
 	}
 
 	private int handleEmptyString() {
