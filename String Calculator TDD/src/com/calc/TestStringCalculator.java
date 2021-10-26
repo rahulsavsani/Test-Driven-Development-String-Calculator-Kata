@@ -38,7 +38,10 @@ public class TestStringCalculator {
 			{"1,2,4",7},					//addMultipleNumsReturnsSum
 			{"1,2,3,4",10},					//addMultipleNumsReturnsSum
 			
-			{"1\n2"}						//addNewLineDelimeterReturnsSum
+			{"1\n2",3},						//addNewLineDelimeterReturnsSum
+			{"1\n2,3",6},					//addNewLineDelimeterReturnsSum
+			
+			{"//;\n1;2",3}					//addCustomDelimeterReturn
 			
 		});
 	}
