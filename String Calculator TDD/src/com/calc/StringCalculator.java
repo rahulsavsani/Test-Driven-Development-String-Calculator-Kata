@@ -36,7 +36,15 @@ public class StringCalculator {
 
 	private List<Integer> tokenize(String numbers) {
 		String[] strNums;
-		strNums = numbers.split(",|\n");
+		
+		if(numbers.startsWith("//")) {
+			
+			String[] str = numbers.split("\n");
+			strNums = str[1].split(String.valueOf(str[0].charAt(2)));			
+		}
+		else {
+			strNums = numbers.split(",|\n");			
+		}
 		
 		return Stream.of(strNums).map(Integer::valueOf).collect(Collectors.toList());
 	}
