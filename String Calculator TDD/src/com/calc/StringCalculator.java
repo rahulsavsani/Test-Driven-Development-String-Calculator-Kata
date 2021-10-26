@@ -4,7 +4,7 @@ public class StringCalculator {
 	
 	int add(String numbers) {
 		if(hasMultipleNums(numbers))
-			return handleMultipleNums();
+			return handleMultipleNums(numbers);
 			
 		if(hasTwoNums(numbers))
 			return handleTwoNums(numbers);
@@ -19,8 +19,8 @@ public class StringCalculator {
 		return numbers.length() > 3;
 	}
 
-	private int handleMultipleNums() {
-		return 6;
+	private int handleMultipleNums(String numbers) {
+		return Integer.parseInt(String.valueOf(numbers.charAt(0))) + Integer.parseInt(String.valueOf(numbers.charAt(2))) + Integer.parseInt(String.valueOf(numbers.charAt(4)));
 	}
 
 	private boolean isEmptyString(String numbers) {
