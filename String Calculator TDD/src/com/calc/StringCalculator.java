@@ -3,6 +3,6 @@ package com.calc;
 public class StringCalculator {
 	
 	int add(String numbers) {
-		return -1;
+		return 0;
 	}
 }
