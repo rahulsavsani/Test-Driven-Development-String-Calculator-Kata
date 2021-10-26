@@ -34,7 +34,8 @@ public class TestStringCalculator {
 			{"1,2",3},					//addTwoNumsReturnsSum
 			{"1,3",4},					//addTwoNumsReturnsSum
 			
-			{"1,2,3",6}					//addTwoNumsReturnsSum
+			{"1,2,3",6},					//addMultipleNumsReturnsSum
+			{"1,2,4",7},					//addMultipleNumsReturnsSum
 			
 		});
 	}
