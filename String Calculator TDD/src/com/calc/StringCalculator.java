@@ -1,5 +1,9 @@
 package com.calc;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class StringCalculator {
 	
 	int add(String numbers) {
@@ -17,10 +21,17 @@ public class StringCalculator {
 	}
 
 	private int handleMultipleNums(String numbers) {
-		if(numbers.length() == 3)
-			return Integer.parseInt(String.valueOf(numbers.charAt(0))) + Integer.parseInt(String.valueOf(numbers.charAt(2)));
+
+		String[] strNums;
+		strNums = numbers.split(",");
 		
-		return Integer.parseInt(String.valueOf(numbers.charAt(0))) + Integer.parseInt(String.valueOf(numbers.charAt(2))) + Integer.parseInt(String.valueOf(numbers.charAt(4)));
+		List<Integer> nums = Stream.of(strNums).map(Integer::valueOf).collect(Collectors.toList()); 
+		
+		int sum = 0;
+		for(int i : nums)
+			sum += i;
+		
+		return sum;
 	}
 
 	private boolean isEmptyString(String numbers) {
