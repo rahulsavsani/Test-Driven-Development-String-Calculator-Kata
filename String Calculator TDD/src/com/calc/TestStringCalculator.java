@@ -26,4 +26,10 @@ public class TestStringCalculator {
 		
 		assertEquals(1, sc.add("1"));
 	}
+	
+	@Test
+	public void addSingleNum2ReturnsNum() {
+		
+		assertEquals(2, sc.add("2"));
+	}
 }
