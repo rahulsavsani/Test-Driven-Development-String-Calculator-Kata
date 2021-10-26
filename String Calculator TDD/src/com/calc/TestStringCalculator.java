@@ -32,7 +32,9 @@ public class TestStringCalculator {
 			{"2",2},					//addSingleNumReturnsNum
 			
 			{"1,2",3},					//addTwoNumsReturnsSum
-			{"1,3",4}					//addTwoNumsReturnsSum
+			{"1,3",4},					//addTwoNumsReturnsSum
+			
+			{"1,2,3",6}					//addTwoNumsReturnsSum
 			
 		});
 	}
