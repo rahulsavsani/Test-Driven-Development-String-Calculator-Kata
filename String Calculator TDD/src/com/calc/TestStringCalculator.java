@@ -49,4 +49,9 @@ public class TestStringCalculator {
 		assertEquals(expectedResult, sc.add(numbers));
 	}
 	
+	@Test
+	public void addTwoNumsReturnsSum() {
+		
+		assertEquals(3, sc.add("1,2"));
+	}
 }
