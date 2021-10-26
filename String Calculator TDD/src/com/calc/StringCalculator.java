@@ -5,7 +5,7 @@ public class StringCalculator {
 	int add(String numbers) {
 		
 		if(numbers.length() == 3)
-			return handleTwoNums();
+			return handleTwoNums(numbers);
 		
 		if(numbers.isEmpty())
 			return handleEmptyString();
@@ -21,7 +21,8 @@ public class StringCalculator {
 		return 0;
 	}
 
-	private int handleTwoNums() {
-		return 3;
+	private int handleTwoNums(String numbers) {
+		
+		return Integer.parseInt(String.valueOf(numbers.charAt(0))) + Integer.parseInt(String.valueOf(numbers.charAt(2)));
 	}
 }
