@@ -81,5 +81,10 @@ public class TestStringCalculator {
 		thrown.expectMessage("negatives not allowed : [-1, -2]");
 		sc.add("-1,-2");
 	}
-
+	
+	@Test
+	public void testGetAddCallCountReturnsCount() {
+		
+		assertEquals(36, sc.getCallCount());
+	}
 }
