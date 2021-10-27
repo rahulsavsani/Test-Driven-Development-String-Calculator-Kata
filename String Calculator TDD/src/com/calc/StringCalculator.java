@@ -8,7 +8,7 @@ public class StringCalculator {
 	
 	private static final int EMPTY_STRING_SUM_VALUE = 0;
 	
-	int add(String numbers) {
+	int add(String numbers) throws RuntimeException {
 
 		if(isEmptyString(numbers))
 			return EMPTY_STRING_SUM_VALUE;
@@ -28,8 +28,18 @@ public class StringCalculator {
 
 	private int getTokenSum(List<Integer> nums) {
 		int sum = 0;
-		for(int i : nums)
+		String exceptionMsg = "negatives not allowed : ";
+		
+		for(int i : nums) {
+			
+			if(i < 0) {
+				exceptionMsg += i;
+				throw new RuntimeException(exceptionMsg);
+			}
+			
 			sum += i;
+		}
+		
 		return sum;
 	}
 
