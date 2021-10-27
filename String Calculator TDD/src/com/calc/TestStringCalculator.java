@@ -70,8 +70,8 @@ public class TestStringCalculator {
 	public void testStringCalculatorNegativeNums() throws RuntimeException{
 		
 		thrown.expect(RuntimeException.class);
-		thrown.expectMessage("negatives not allowed : -1");
-		sc.add("-1");
+		thrown.expectMessage("negatives not allowed : -1,-2");
+		sc.add("-1,-2");
 	}
 
 }
