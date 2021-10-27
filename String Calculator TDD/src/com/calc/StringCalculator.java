@@ -60,7 +60,8 @@ public class StringCalculator {
 	private void handleNegativeNums(List<Integer> nums) throws RuntimeException {
 		
 		StringBuilder exceptionMsg = new StringBuilder("negatives not allowed : ");
-		List<Integer> negatives = nums.stream().filter(x -> x<0).collect(Collectors.toList());
+		
+		List<Integer> negatives = getNegatives(nums);
 		
 		if(!negatives.isEmpty()) {
 			
@@ -68,6 +69,10 @@ public class StringCalculator {
 			throw new RuntimeException(exceptionMsg.toString());
 		
 		}
+	}
+
+	private List<Integer> getNegatives(List<Integer> nums) {
+		return nums.stream().filter(x -> x<0).collect(Collectors.toList());
 	}
 
 
@@ -109,12 +114,20 @@ public class StringCalculator {
 	
 	private String[] splitByMultiLengthCustomDelimeter(String numbers) {
 		
-		StringBuilder sb = new StringBuilder();
-		
 		Matcher m = Pattern.compile("//(\\[.+\\])+\n(.*)").matcher(numbers);
 		m.matches();
 		String delimeter = m.group(1);
 		String nums = m.group(2);
+		
+		String del = buildDelimeterString(delimeter);
+		
+		return nums.split(del);
+	}
+
+	
+	private String buildDelimeterString(String delimeter) {
+		
+		StringBuilder sb = new StringBuilder();
 		int l = delimeter.length();
 		
 		for(int i = 0; i<l; i++) {
@@ -128,7 +141,7 @@ public class StringCalculator {
 			}
 		}
 		
-		return nums.split(sb.toString());
+		return sb.toString();
 	}
 
 	private boolean containsMultiLengthCustDelimeter(String numbers) {
