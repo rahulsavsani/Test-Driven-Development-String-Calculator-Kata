@@ -67,10 +67,18 @@ public class TestStringCalculator {
     public ExpectedException thrown = ExpectedException.none();
 	
 	@Test
-	public void testStringCalculatorNegativeNums() throws RuntimeException{
+	public void testStringCalculatorSingleNegativeNum() throws RuntimeException{
 		
 		thrown.expect(RuntimeException.class);
-		thrown.expectMessage("negatives not allowed : -1,-2");
+		thrown.expectMessage("negatives not allowed : [-1]");
+		sc.add("-1");
+	}
+	
+	@Test
+	public void testStringCalculatorMultipleNegativeNums() throws RuntimeException{
+		
+		thrown.expect(RuntimeException.class);
+		thrown.expectMessage("negatives not allowed : [-1, -2]");
 		sc.add("-1,-2");
 	}
 

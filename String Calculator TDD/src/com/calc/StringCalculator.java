@@ -1,6 +1,5 @@
 package com.calc;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -29,22 +28,29 @@ public class StringCalculator {
 
 	private int getTokenSum(List<Integer> nums) throws RuntimeException {
 		int sum = 0;
-		StringBuilder exceptionMsg = new StringBuilder("negatives not allowed : ");
-		List<Integer> negatives = new ArrayList<>();
-		
-		negatives = nums.stream().filter(x -> x<0).collect(Collectors.toList());
+
+		handleNegativeNums(nums);
 		
 		for(int i : nums) {
 			
 			sum += i;
 		}
-		
-		if(!negatives.isEmpty()) {
-			exceptionMsg.append(negatives.toString());
-			throw new RuntimeException(exceptionMsg.toString());
-		}
 			
 		return sum;
+	}
+
+
+	private void handleNegativeNums(List<Integer> nums) throws RuntimeException {
+		
+		StringBuilder exceptionMsg = new StringBuilder("negatives not allowed : ");
+		List<Integer> negatives = nums.stream().filter(x -> x<0).collect(Collectors.toList());
+		
+		if(!negatives.isEmpty()) {
+			
+			exceptionMsg.append(negatives.toString());
+			throw new RuntimeException(exceptionMsg.toString());
+		
+		}
 	}
 
 
