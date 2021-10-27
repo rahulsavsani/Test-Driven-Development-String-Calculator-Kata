@@ -42,11 +42,15 @@ public class StringCalculator {
 		
 		for(int i : nums) {
 			
-			if(i <= 1000)
+			if(isLessThan1000(i))
 				sum += i;
 		}
 			
 		return sum;
+	}
+
+	private boolean isLessThan1000(int i) {
+		return i <= 1000;
 	}
 
 
