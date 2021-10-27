@@ -7,9 +7,18 @@ import java.util.stream.Stream;
 public class StringCalculator {
 	
 	private static final int EMPTY_STRING_SUM_VALUE = 0;
+	int callCount = 0;
+	
+	public int getCallCount() {
+		return callCount;
+	}
 	
 	int add(String numbers) throws RuntimeException {
-
+		
+		synchronized(this) {
+			callCount++;
+		}
+		
 		if(isEmptyString(numbers))
 			return EMPTY_STRING_SUM_VALUE;
 		
