@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 public class StringCalculator {
 	
 	private static final int EMPTY_STRING_SUM_VALUE = 0;
+	private StringBuilder exceptionMsg = new StringBuilder("negatives not allowed : ");
 	
 	int add(String numbers) throws RuntimeException {
 
@@ -17,7 +18,7 @@ public class StringCalculator {
 	}
 	
 
-	private int handleMultipleNums(String numbers) {
+	private int handleMultipleNums(String numbers) throws RuntimeException {
 
 		List<Integer> nums = tokenize(numbers); 
 		
@@ -26,21 +27,25 @@ public class StringCalculator {
 	}
 
 
-	private int getTokenSum(List<Integer> nums) {
+	private int getTokenSum(List<Integer> nums) throws RuntimeException {
 		int sum = 0;
-		String exceptionMsg = "negatives not allowed : ";
 		
 		for(int i : nums) {
 			
-			if(i < 0) {
-				exceptionMsg += i;
-				throw new RuntimeException(exceptionMsg);
-			}
+			handleNegativeNums(i);
 			
 			sum += i;
 		}
 		
 		return sum;
+	}
+
+
+	private void handleNegativeNums(int i) throws RuntimeException {
+		if(i < 0) {
+			this.exceptionMsg.append(i);
+			throw new RuntimeException(exceptionMsg.toString());
+		}
 	}
 
 

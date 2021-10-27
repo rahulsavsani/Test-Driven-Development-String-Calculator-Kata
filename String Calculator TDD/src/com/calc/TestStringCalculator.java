@@ -61,6 +61,7 @@ public class TestStringCalculator {
 		assertEquals(expectedResult, sc.add(numbers));
 	}
 	
+	
 	@SuppressWarnings("deprecation")
 	@Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -71,7 +72,6 @@ public class TestStringCalculator {
 		thrown.expect(RuntimeException.class);
 		thrown.expectMessage("negatives not allowed : -1");
 		sc.add("-1");
-//		RuntimeException e = assertThrows(RuntimeException.class, sc.add("-1"));
 	}
 
 }
