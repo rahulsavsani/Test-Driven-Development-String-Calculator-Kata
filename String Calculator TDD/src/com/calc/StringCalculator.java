@@ -99,27 +99,34 @@ public class StringCalculator {
 	private String[] splitByCustomDelimeter(String numbers) {
 
 		String[] str = numbers.split("\n");
-		String nums;
-		String delimeter;
-		StringBuilder sb = new StringBuilder();
-		int l; 
 		
-		if(numbers.startsWith("//[")) {
-			Matcher m = Pattern.compile("//\\[(.+)\\]\n(.*)").matcher(numbers);
-			m.matches();
-			delimeter = m.group(1);
-			nums = m.group(2);
-			l = delimeter.length();
-			
-			for(int i = 0; i<l; i++) {
-				sb.append("\\");
-				sb.append(delimeter.charAt(i));
-			}
-			
-			return nums.split(sb.toString());
-		}
+		if(containsMultiLengthCustDelimeter(numbers)) 
+			return splitByMultiLengthCustomDelimeter(numbers);
 			
 		return str[1].split(String.valueOf(str[0].charAt(2)));
+	}
+
+	
+	private String[] splitByMultiLengthCustomDelimeter(String numbers) {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		Matcher m = Pattern.compile("//\\[(.+)\\]\n(.*)").matcher(numbers);
+		m.matches();
+		String delimeter = m.group(1);
+		String nums = m.group(2);
+		int l = delimeter.length();
+		
+		for(int i = 0; i<l; i++) {
+			sb.append("\\");
+			sb.append(delimeter.charAt(i));
+		}
+		
+		return nums.split(sb.toString());
+	}
+
+	private boolean containsMultiLengthCustDelimeter(String numbers) {
+		return numbers.startsWith("//[");
 	}
 
 
