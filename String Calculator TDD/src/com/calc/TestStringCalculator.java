@@ -1,11 +1,13 @@
 package com.calc;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -41,7 +43,8 @@ public class TestStringCalculator {
 			{"1\n2",3},						//addNewLineDelimeterReturnsSum
 			{"1\n2,3",6},					//addNewLineDelimeterReturnsSum
 			
-			{"//;\n1;2",3}					//addCustomDelimeterReturn
+			{"//;\n1;2",3},					//addCustomDelimeterReturnsSum
+			{"//&\n1&2&3",6}				//addCustomDelimeterReturnsSum
 			
 		});
 	}
@@ -53,9 +56,22 @@ public class TestStringCalculator {
 	}
 	
 	@Test
-	public void testStringCalculator() {
+	public void testStringCalculatorPositiveNums() {
 		
 		assertEquals(expectedResult, sc.add(numbers));
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Rule
+    public ExpectedException thrown = ExpectedException.none();
+	
+	@Test
+	public void testStringCalculatorNegativeNums() throws RuntimeException{
+		
+		thrown.expect(RuntimeException.class);
+		thrown.expectMessage("negatives not allowed : -1");
+		sc.add("-1");
+//		RuntimeException e = assertThrows(RuntimeException.class, sc.add("-1"));
 	}
 
 }
