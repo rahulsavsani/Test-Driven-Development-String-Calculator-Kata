@@ -1,8 +1,11 @@
 package com.calc;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 
 public class StringCalculator {
 	
@@ -96,7 +99,26 @@ public class StringCalculator {
 	private String[] splitByCustomDelimeter(String numbers) {
 
 		String[] str = numbers.split("\n");
-
+		String nums;
+		String delimeter;
+		StringBuilder sb = new StringBuilder();
+		int l; 
+		
+		if(numbers.startsWith("//[")) {
+			Matcher m = Pattern.compile("//\\[(.+)\\]\n(.*)").matcher(numbers);
+			m.matches();
+			delimeter = m.group(1);
+			nums = m.group(2);
+			l = delimeter.length();
+			
+			for(int i = 0; i<l; i++) {
+				sb.append("\\");
+				sb.append(delimeter.charAt(i));
+			}
+			
+			return nums.split(sb.toString());
+		}
+			
 		return str[1].split(String.valueOf(str[0].charAt(2)));
 	}
 
