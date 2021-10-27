@@ -44,7 +44,9 @@ public class TestStringCalculator {
 			{"1\n2,3",6},					//addNewLineDelimeterReturnsSum
 			
 			{"//;\n1;2",3},					//addCustomDelimeterReturnsSum
-			{"//&\n1&2&3",6}				//addCustomDelimeterReturnsSum
+			{"//&\n1&2&3",6},				//addCustomDelimeterReturnsSum
+			
+			{"2,1001",2}					//addIgnoreNumsGreaterThan1000ReturnsSum
 			
 		});
 	}
