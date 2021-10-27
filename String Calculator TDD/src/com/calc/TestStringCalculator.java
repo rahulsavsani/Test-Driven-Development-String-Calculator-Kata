@@ -48,7 +48,9 @@ public class TestStringCalculator {
 			
 			{"2,1001",2},					//addIgnoreNumsGreaterThan1000ReturnsSum
 			
-			{"//[***]\n1***2***3",6}		//addMultiLengthCustomDelimeterReturnsSum
+			{"//[***]\n1***2***3",6},		//addMultiLengthCustomDelimeterReturnsSum
+			
+			{"//[*][%]\n1*2%3",6}			//addMultipleCustomDelimetersReturnsSum
 			
 		});
 	}
