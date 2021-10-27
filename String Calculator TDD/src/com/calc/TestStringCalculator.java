@@ -40,7 +40,7 @@ public class TestStringCalculator {
 			{"1,2,4",7},					//addMultipleNumsReturnsSum
 			{"1,2,3,4",10},					//addMultipleNumsReturnsSum
 			
-			{"1\n2",3},						//addNewLineDelimeterReturnsSum
+			{"1\n2",3},					//addNewLineDelimeterReturnsSum
 			{"1\n2,3",6},					//addNewLineDelimeterReturnsSum
 			
 			{"//;\n1;2",3},					//addCustomDelimeterReturnsSum
@@ -50,7 +50,8 @@ public class TestStringCalculator {
 			
 			{"//[***]\n1***2***3",6},		//addMultiLengthCustomDelimeterReturnsSum
 			
-			{"//[*][%]\n1*2%3",6}			//addMultipleCustomDelimetersReturnsSum
+			{"//[*][%]\n1*2%3",6},				//addMultipleCustomDelimetersReturnsSum
+			{"//[**][%%]\n1**2%%3",6}			//addMultiLengthMultipleCustomDelimetersReturnsSum
 			
 		});
 	}
