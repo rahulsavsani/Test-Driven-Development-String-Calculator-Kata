@@ -46,7 +46,9 @@ public class TestStringCalculator {
 			{"//;\n1;2",3},					//addCustomDelimeterReturnsSum
 			{"//&\n1&2&3",6},				//addCustomDelimeterReturnsSum
 			
-			{"2,1001",2}					//addIgnoreNumsGreaterThan1000ReturnsSum
+			{"2,1001",2},					//addIgnoreNumsGreaterThan1000ReturnsSum
+			
+			{"//[***]\n1***2***3",6}		//addMultiLengthCustomDelimeterReturnsSum
 			
 		});
 	}
