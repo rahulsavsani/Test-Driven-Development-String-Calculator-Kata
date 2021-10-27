@@ -42,7 +42,8 @@ public class StringCalculator {
 		
 		for(int i : nums) {
 			
-			sum += i;
+			if(i <= 1000)
+				sum += i;
 		}
 			
 		return sum;
