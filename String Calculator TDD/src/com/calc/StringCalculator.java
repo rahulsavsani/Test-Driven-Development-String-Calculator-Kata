@@ -111,15 +111,21 @@ public class StringCalculator {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		Matcher m = Pattern.compile("//\\[(.+)\\]\n(.*)").matcher(numbers);
+		Matcher m = Pattern.compile("//(\\[.+\\])+\n(.*)").matcher(numbers);
 		m.matches();
 		String delimeter = m.group(1);
 		String nums = m.group(2);
 		int l = delimeter.length();
 		
 		for(int i = 0; i<l; i++) {
-			sb.append("\\");
-			sb.append(delimeter.charAt(i));
+			
+			if(delimeter.charAt(i) == ']' && i != l-1) {
+				sb.append('|');
+			}
+			else if(delimeter.charAt(i) != '[' && delimeter.charAt(i) != ']'){
+				sb.append("\\");
+				sb.append(delimeter.charAt(i));
+			}
 		}
 		
 		return nums.split(sb.toString());
